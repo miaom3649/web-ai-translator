@@ -1,0 +1,16 @@
+{
+    "manifest_version": 3,
+    "name": "Web AI Translator",
+    "version": "1.0",
+    "description": "Translate webpage using modern AI",
+    "permissions": ["activeTab", "scripting"],
+    "action": {},
+    "content_scripts": [{
+        "matches": ["<all_urls>"],
+        "js": ["content.js"],
+        "run_at": "document_idle"
+    }],
+    "background": {
+        "service_worker": "background.js"
+    }
+}
