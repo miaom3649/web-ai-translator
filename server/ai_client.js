@@ -2,8 +2,8 @@
 async function translateText(text) {
   try {
     const apiKey = process.env.OPENAI_API_KEY;
-    const apiUrl = process.env.AI_API_URL || "https://api.openai.com/v1/chat/completions";
-    const model = process.env.MODEL_NAME || "gpt-3.5-turbo";
+    const apiUrl = process.env.AI_API_URL;
+    const model = process.env.MODEL_NAME;
 
     const response = await fetch(apiUrl, {
       method: "POST",
