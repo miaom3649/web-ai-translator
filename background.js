@@ -1,5 +1,8 @@
+const SERVER_PORT = 5000;
+const SERVER_URL = `http://localhost:${SERVER_PORT}/translate`;
+
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    fetch("http://localhost:5000/translate", {
+    fetch(SERVER_URL, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
