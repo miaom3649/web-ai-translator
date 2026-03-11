@@ -1,21 +1,16 @@
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    fetch("https://api.openai.com/v1/chat/completions", {
+    fetch("http://localhost:5000/translate", {
         method: "POST",
         headers: {
-            "Content-Type": "application/json",
-            "Authorization": "Bearer API-KEY"
+            "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            model: "gpt-3.5-turbo",
-            messages: [
-                { role: "system", content: "Translate the following text to Chinese" },
-                { role: "user", content: message.text }
-            ]
+            text: message.text
         })
     })
     .then(res => res.json())
     .then(data => {
-        sendResponse({ translatedText: data.choices[0].message.content });
+        sendResponse({ translatedText: data.translatedText });
     })
     .catch(err => {
         console.error(err);
